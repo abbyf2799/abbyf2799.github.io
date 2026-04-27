@@ -1,0 +1,931 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Abby Frackenpohl — Localization Strategist</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream: #FAF7F2;
+      --warm-white: #FFFDF9;
+      --ink: #1C1A17;
+      --ink-soft: #3D3A34;
+      --ink-muted: #6E6A62;
+      --sage: #7A9E8E;
+      --sage-light: #EAF2EE;
+      --sage-mid: #B8D4C8;
+      --terracotta: #C4714A;
+      --terracotta-light: #F5EAE4;
+      --gold: #C9A84C;
+      --font-display: 'Cormorant Garamond', Georgia, serif;
+      --font-body: 'DM Sans', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--cream);
+      color: var(--ink);
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.25rem 3rem;
+      background: rgba(250, 247, 242, 0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(28,26,23,0.08);
+    }
+
+    .nav-name {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      font-weight: 500;
+      letter-spacing: 0.01em;
+      color: var(--ink);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.8rem;
+      font-weight: 400;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink-muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--terracotta); }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      padding-top: 80px;
+    }
+
+    .hero-left {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 5rem 4rem 5rem 3rem;
+      position: relative;
+    }
+
+    .hero-eyebrow {
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--terracotta);
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .hero-eyebrow::before {
+      content: '';
+      display: inline-block;
+      width: 32px;
+      height: 1px;
+      background: var(--terracotta);
+    }
+
+    .hero-headline {
+      font-family: var(--font-display);
+      font-size: clamp(3.2rem, 5.5vw, 5rem);
+      font-weight: 500;
+      line-height: 1.05;
+      color: var(--ink);
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-headline em {
+      font-style: italic;
+      color: var(--sage);
+    }
+
+    .hero-sub {
+      font-size: 1rem;
+      font-weight: 300;
+      color: var(--ink-soft);
+      max-width: 420px;
+      margin-bottom: 2.5rem;
+      line-height: 1.75;
+    }
+
+    .hero-sub strong {
+      font-weight: 500;
+      color: var(--ink);
+    }
+
+    .hero-cta-row {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      padding: 0.85rem 2rem;
+      background: var(--ink);
+      color: var(--cream);
+      font-family: var(--font-body);
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    .btn-primary:hover { background: var(--terracotta); transform: translateY(-1px); }
+
+    .btn-secondary {
+      display: inline-block;
+      padding: 0.85rem 2rem;
+      background: transparent;
+      color: var(--ink);
+      font-family: var(--font-body);
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: 1px solid rgba(28,26,23,0.25);
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .btn-secondary:hover { border-color: var(--terracotta); color: var(--terracotta); }
+
+    .hero-right {
+      background: var(--sage-light);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 4rem 3rem 3rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-right::before {
+      content: '';
+      position: absolute;
+      top: -60px; right: -60px;
+      width: 300px; height: 300px;
+      border-radius: 50%;
+      background: var(--sage-mid);
+      opacity: 0.35;
+    }
+
+    /* Photo placeholder — replace with your actual <img> */
+    .photo-placeholder {
+      width: 100%;
+      aspect-ratio: 4/5;
+      background: linear-gradient(160deg, var(--sage-mid) 0%, var(--sage) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 2rem;
+      position: relative;
+      z-index: 1;
+      max-width: 360px;
+    }
+
+    .photo-placeholder-label {
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.7);
+    }
+
+    .stat-row {
+      display: flex;
+      gap: 2.5rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .stat { }
+
+    .stat-number {
+      font-family: var(--font-display);
+      font-size: 2.4rem;
+      font-weight: 600;
+      color: var(--ink);
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink-muted);
+      margin-top: 0.25rem;
+    }
+
+    /* ABOUT */
+    .about {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 0;
+      border-top: 1px solid rgba(28,26,23,0.1);
+    }
+
+    .about-label {
+      padding: 5rem 3rem;
+      background: var(--warm-white);
+      border-right: 1px solid rgba(28,26,23,0.08);
+    }
+
+    .section-label {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--ink-muted);
+      writing-mode: vertical-lr;
+      transform: rotate(180deg);
+    }
+
+    .about-content {
+      padding: 5rem 4rem 5rem 5rem;
+    }
+
+    .about-content h2 {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 3.5vw, 2.8rem);
+      font-weight: 500;
+      line-height: 1.2;
+      margin-bottom: 1.75rem;
+      color: var(--ink);
+    }
+
+    .about-content h2 em { font-style: italic; color: var(--terracotta); }
+
+    .about-content p {
+      font-size: 0.97rem;
+      font-weight: 300;
+      color: var(--ink-soft);
+      max-width: 560px;
+      margin-bottom: 1.25rem;
+      line-height: 1.85;
+    }
+
+    .about-content p strong { font-weight: 500; color: var(--ink); }
+
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 2rem;
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 0.35rem 0.9rem;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border: 1px solid rgba(28,26,23,0.15);
+      color: var(--ink-soft);
+    }
+
+    /* SERVICES */
+    .services {
+      background: var(--ink);
+      padding: 6rem 3rem;
+    }
+
+    .services-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 4rem;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      padding-bottom: 2rem;
+    }
+
+    .services-header h2 {
+      font-family: var(--font-display);
+      font-size: clamp(2.2rem, 4vw, 3.2rem);
+      font-weight: 500;
+      color: var(--cream);
+      line-height: 1.1;
+    }
+
+    .services-header h2 em { font-style: italic; color: var(--gold); }
+
+    .services-header p {
+      font-size: 0.85rem;
+      color: rgba(250,247,242,0.5);
+      max-width: 240px;
+      text-align: right;
+      font-weight: 300;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: rgba(255,255,255,0.08);
+    }
+
+    .service-card {
+      background: var(--ink);
+      padding: 3rem 2.5rem;
+      transition: background 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .service-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0;
+      width: 0; height: 2px;
+      background: var(--gold);
+      transition: width 0.4s ease;
+    }
+
+    .service-card:hover { background: #252320; }
+    .service-card:hover::after { width: 100%; }
+
+    .service-number {
+      font-family: var(--font-display);
+      font-size: 3rem;
+      font-weight: 400;
+      color: rgba(255,255,255,0.08);
+      line-height: 1;
+      margin-bottom: 1.5rem;
+    }
+
+    .service-icon {
+      width: 36px;
+      height: 36px;
+      margin-bottom: 1.25rem;
+      opacity: 0.7;
+    }
+
+    .service-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      font-weight: 500;
+      color: var(--cream);
+      margin-bottom: 0.75rem;
+      line-height: 1.2;
+    }
+
+    .service-card p {
+      font-size: 0.85rem;
+      font-weight: 300;
+      color: rgba(250,247,242,0.55);
+      line-height: 1.8;
+    }
+
+    .service-tag {
+      display: inline-block;
+      margin-top: 1.5rem;
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      opacity: 0.7;
+    }
+
+    /* NICHE CALLOUT */
+    .niche {
+      background: var(--terracotta-light);
+      padding: 5rem 3rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+      border-top: 1px solid rgba(196,113,74,0.15);
+    }
+
+    .niche h2 {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 3.5vw, 2.8rem);
+      font-weight: 500;
+      line-height: 1.2;
+      color: var(--ink);
+    }
+
+    .niche h2 em { font-style: italic; color: var(--terracotta); }
+
+    .niche-right p {
+      font-size: 0.95rem;
+      font-weight: 300;
+      color: var(--ink-soft);
+      line-height: 1.85;
+      margin-bottom: 1rem;
+    }
+
+    .niche-right p strong { font-weight: 500; color: var(--ink); }
+
+    /* APPROACH */
+    .approach {
+      padding: 6rem 3rem;
+      background: var(--warm-white);
+      border-top: 1px solid rgba(28,26,23,0.08);
+    }
+
+    .approach h2 {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 3.5vw, 2.8rem);
+      font-weight: 500;
+      color: var(--ink);
+      margin-bottom: 3.5rem;
+      max-width: 500px;
+      line-height: 1.2;
+    }
+
+    .approach h2 em { font-style: italic; color: var(--sage); }
+
+    .approach-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2.5rem;
+    }
+
+    .approach-item { }
+
+    .approach-item-num {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      color: var(--terracotta);
+      margin-bottom: 0.75rem;
+    }
+
+    .approach-item h3 {
+      font-size: 0.9rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      color: var(--ink);
+      margin-bottom: 0.6rem;
+    }
+
+    .approach-item p {
+      font-size: 0.82rem;
+      font-weight: 300;
+      color: var(--ink-muted);
+      line-height: 1.75;
+    }
+
+    /* SPEAKING / MEDIA placeholder */
+    .media {
+      padding: 6rem 3rem;
+      background: var(--cream);
+      border-top: 1px solid rgba(28,26,23,0.08);
+    }
+
+    .media-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 3rem;
+    }
+
+    .media h2 {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 3.5vw, 2.8rem);
+      font-weight: 500;
+      color: var(--ink);
+      line-height: 1.2;
+    }
+
+    .media h2 em { font-style: italic; color: var(--sage); }
+
+    .media-note {
+      font-size: 0.78rem;
+      color: var(--ink-muted);
+      font-style: italic;
+    }
+
+    .media-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .media-card {
+      background: var(--warm-white);
+      border: 1px solid rgba(28,26,23,0.08);
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      min-height: 200px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .media-card-placeholder {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .media-card-placeholder svg { opacity: 0.12; }
+
+    .media-card-placeholder span {
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink-muted);
+      opacity: 0.4;
+    }
+
+    /* CONTACT */
+    .contact {
+      background: var(--sage-light);
+      padding: 6rem 3rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+      border-top: 1px solid rgba(122,158,142,0.2);
+    }
+
+    .contact h2 {
+      font-family: var(--font-display);
+      font-size: clamp(2.2rem, 4vw, 3.2rem);
+      font-weight: 500;
+      color: var(--ink);
+      line-height: 1.1;
+    }
+
+    .contact h2 em { font-style: italic; color: var(--sage); }
+
+    .contact p {
+      margin-top: 1.25rem;
+      font-size: 0.9rem;
+      font-weight: 300;
+      color: var(--ink-soft);
+      max-width: 380px;
+      line-height: 1.8;
+    }
+
+    .contact-right {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .contact-link {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1.25rem 1.5rem;
+      background: white;
+      border: 1px solid rgba(28,26,23,0.1);
+      text-decoration: none;
+      color: var(--ink);
+      font-size: 0.85rem;
+      font-weight: 400;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+
+    .contact-link:hover { border-color: var(--sage); transform: translateX(4px); }
+
+    .contact-link-icon {
+      width: 18px;
+      height: 18px;
+      color: var(--sage);
+      flex-shrink: 0;
+    }
+
+    .contact-link-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink-muted);
+      display: block;
+    }
+
+    .contact-link-value {
+      font-weight: 500;
+      color: var(--ink);
+    }
+
+    /* FOOTER */
+    footer {
+      padding: 2rem 3rem;
+      background: var(--ink);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    footer p {
+      font-size: 0.75rem;
+      color: rgba(250,247,242,0.35);
+      letter-spacing: 0.05em;
+    }
+
+    footer a {
+      font-size: 0.75rem;
+      color: rgba(250,247,242,0.35);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    footer a:hover { color: var(--gold); }
+
+    /* ANIMATIONS */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .fade-up {
+      opacity: 0;
+      animation: fadeUp 0.7s ease forwards;
+    }
+
+    .delay-1 { animation-delay: 0.15s; }
+    .delay-2 { animation-delay: 0.3s; }
+    .delay-3 { animation-delay: 0.45s; }
+    .delay-4 { animation-delay: 0.6s; }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { gap: 1.5rem; }
+
+      .hero { grid-template-columns: 1fr; min-height: auto; }
+      .hero-left { padding: 3rem 1.5rem; }
+      .hero-right { min-height: 360px; padding: 2rem 1.5rem; }
+      .photo-placeholder { max-width: 100%; aspect-ratio: 3/2; }
+
+      .about { grid-template-columns: 1fr; }
+      .about-label { padding: 2rem 1.5rem; }
+      .section-label { writing-mode: horizontal-tb; transform: none; }
+      .about-content { padding: 2rem 1.5rem; }
+
+      .services { padding: 4rem 1.5rem; }
+      .services-grid { grid-template-columns: 1fr; }
+      .services-header { flex-direction: column; align-items: flex-start; gap: 1rem; }
+      .services-header p { text-align: left; }
+
+      .niche { grid-template-columns: 1fr; padding: 4rem 1.5rem; }
+      .approach { padding: 4rem 1.5rem; }
+      .approach-grid { grid-template-columns: 1fr 1fr; }
+
+      .media { padding: 4rem 1.5rem; }
+      .media-grid { grid-template-columns: 1fr; }
+
+      .contact { grid-template-columns: 1fr; padding: 4rem 1.5rem; }
+      footer { flex-direction: column; gap: 0.5rem; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-name">Abby Frackenpohl</a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#approach">Approach</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-left">
+      <p class="hero-eyebrow fade-up">Localization strategist & consultant</p>
+      <h1 class="hero-headline fade-up delay-1">
+        Global reach,<br><em>human</em><br>at every market.
+      </h1>
+      <p class="hero-sub fade-up delay-2">
+        Helping <strong>digital health and wellness platforms</strong> expand into new territories with localization strategies that are scalable, culturally intelligent, and AI-enhanced.
+      </p>
+      <div class="hero-cta-row fade-up delay-3">
+        <a href="#services" class="btn-primary">See what I do</a>
+        <a href="#contact" class="btn-secondary">Work with me</a>
+      </div>
+    </div>
+    <div class="hero-right">
+      <!-- Replace this div with: <img src="your-photo.jpg" alt="Abby Frackenpohl" style="width:100%;object-fit:cover;"> -->
+      <div class="photo-placeholder">
+        <span class="photo-placeholder-label">Your photo here</span>
+      </div>
+      <div class="stat-row">
+        <div class="stat">
+          <div class="stat-number">9+</div>
+          <div class="stat-label">Years in localization</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number">Global</div>
+          <div class="stat-label">Market experience</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number">AI-led</div>
+          <div class="stat-label">Workflow design</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="about-label">
+      <span class="section-label">About</span>
+    </div>
+    <div class="about-content">
+      <h2>Building systems that let <em>language scale</em> without losing soul.</h2>
+      <p>
+        I'm Abby — a localization leader with over <strong>9 years shaping multilingual content</strong> for global digital health companies. I build scalable localization systems, lead cross-functional teams, and develop strategies that harness AI to deliver high-quality content efficiently across markets.
+      </p>
+      <p>
+        My background sits at the intersection of <strong>mental health content strategy and localization strategy</strong> — which means I understand both the sensitivity required in wellness communication and the operational rigour needed to deliver it at scale.
+      </p>
+      <p>
+        I'm particularly drawn to the <strong>intersection of human expertise and AI innovation</strong>: designing pre-translation workflows, building cultural nuance frameworks, and helping teams use AI tools in ways that genuinely improve quality — not just speed.
+      </p>
+      <div class="tag-row">
+        <span class="tag">Localization strategy</span>
+        <span class="tag">AI integration</span>
+        <span class="tag">Mental health content</span>
+        <span class="tag">Cross-functional leadership</span>
+        <span class="tag">Digital health</span>
+        <span class="tag">Transcreation</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="services" id="services">
+    <div class="services-header">
+      <h2>What I can<br><em>do for you</em></h2>
+      <p>Tailored to where you are and where you're going.</p>
+    </div>
+    <div class="services-grid">
+
+      <div class="service-card">
+        <div class="service-number">01</div>
+        <h3>Localization Strategy & Planning</h3>
+        <p>
+          For startups and growing platforms preparing to enter new markets. I assess your content, audience, and goals — then build a realistic, phased localization roadmap that fits your scale.
+        </p>
+        <span class="service-tag">Market expansion · Roadmapping · Budget planning</span>
+      </div>
+
+      <div class="service-card">
+        <div class="service-number">02</div>
+        <h3>Content Transcreation</h3>
+        <p>
+          Especially for wellness, mental health, and digital health content that can't afford to lose nuance in translation. I lead transcreation projects that preserve tone, intent, and cultural resonance.
+        </p>
+        <span class="service-tag">Wellness content · Cultural adaptation · Quality review</span>
+      </div>
+
+      <div class="service-card">
+        <div class="service-number">03</div>
+        <h3>AI-Enhanced Workflow Design</h3>
+        <p>
+          I design pre-translation workflows that make intelligent use of AI — cultural nuance guides, translator FAQs, source document quality checks — so your teams produce better content, faster.
+        </p>
+        <span class="service-tag">AI integration · Process design · Team enablement</span>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- NICHE CALLOUT -->
+  <section class="niche">
+    <div>
+      <h2>A particular focus on <em>health & wellness</em> platforms.</h2>
+    </div>
+    <div class="niche-right">
+      <p>
+        Content in mental health and digital wellbeing isn't interchangeable across markets. What resonates in one culture may land badly — or cause harm — in another. I bring both the <strong>localization expertise</strong> and the <strong>domain sensitivity</strong> to navigate that.
+      </p>
+      <p>
+        Whether you're a startup planning your first international expansion or an established platform auditing your existing localization operations, I can help you understand what the work actually requires, what's realistic, and how to do it well.
+      </p>
+    </div>
+  </section>
+
+  <!-- APPROACH -->
+  <section class="approach" id="approach">
+    <h2>How I <em>work</em></h2>
+    <div class="approach-grid">
+      <div class="approach-item">
+        <div class="approach-item-num">01 —</div>
+        <h3>Start with goals, not tools</h3>
+        <p>Every engagement begins with understanding what success looks like for your specific markets, audience, and content type.</p>
+      </div>
+      <div class="approach-item">
+        <div class="approach-item-num">02 —</div>
+        <h3>Build for your reality</h3>
+        <p>Strategy that works at your current scale, with a clear path to grow. No overbuilt systems, no underestimating the work.</p>
+      </div>
+      <div class="approach-item">
+        <div class="approach-item-num">03 —</div>
+        <h3>AI where it earns its place</h3>
+        <p>I integrate AI tools into workflows where they genuinely improve quality and efficiency — always with human expertise at the centre.</p>
+      </div>
+      <div class="approach-item">
+        <div class="approach-item-num">04 —</div>
+        <h3>Leave you self-sufficient</h3>
+        <p>The goal is for your team to be able to run and iterate on what we build together — not to create ongoing dependency.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- MEDIA / SPEAKING -->
+  <section class="media" id="media">
+    <div class="media-header">
+      <h2>Speaking &amp; <em>writing</em></h2>
+      <span class="media-note">Photos, articles and talks coming soon</span>
+    </div>
+    <div class="media-grid">
+      <div class="media-card">
+        <div class="media-card-placeholder">
+          <svg width="48" height="48" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+          <span>Speaking photo</span>
+        </div>
+      </div>
+      <div class="media-card">
+        <div class="media-card-placeholder">
+          <svg width="48" height="48" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+          <span>Published article</span>
+        </div>
+      </div>
+      <div class="media-card">
+        <div class="media-card-placeholder">
+          <svg width="48" height="48" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M15 10l4.553-2.069A1 1 0 0121 8.82v6.361a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+          <span>Webinar / panel</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div>
+      <h2>Let's talk about<br>your <em>expansion</em>.</h2>
+      <p>
+        Whether you're mapping out your first international market or rethinking an existing localization setup, I'd love to hear what you're working on.
+      </p>
+    </div>
+    <div class="contact-right">
+      <!-- Replace href values with your actual links -->
+      <a href="https://linkedin.com/in/YOUR-HANDLE" class="contact-link" target="_blank" rel="noopener">
+        <svg class="contact-link-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2" stroke="currentColor" stroke-width="1.5"/></svg>
+        <div>
+          <span class="contact-link-label">Connect on</span>
+          <span class="contact-link-value">LinkedIn</span>
+        </div>
+      </a>
+      <a href="mailto:YOUR@EMAIL.COM" class="contact-link">
+        <svg class="contact-link-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+        <div>
+          <span class="contact-link-label">Send me an</span>
+          <span class="contact-link-value">Email</span>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2025 Abby Frackenpohl</p>
+    <a href="#about">Back to top</a>
+  </footer>
+
+</body>
+</html>
