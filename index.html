@@ -476,13 +476,14 @@
 
     .talk-list { display: flex; flex-direction: column; }
 
-    .talk-item {
-      display: grid;
-      grid-template-columns: 160px 1fr 160px;
-      gap: 2rem;
+ .talk-item {
+      display: flex;
+      flex-direction: column;
       align-items: center;
-      padding: 1.5rem 0;
+      gap: 1rem;
+      padding: 2.5rem 0;
       border-bottom: 1px solid rgba(28,26,23,0.08);
+      text-align: center;
     }
 
     .talk-item:first-child { border-top: 1px solid rgba(28,26,23,0.08); }
